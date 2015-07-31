@@ -3,12 +3,20 @@
 class UsersController extends BaseController {
 	protected $layout = "layouts.main";
 
-	public function __construct() {
+
+
+    public function __construct() {
 	    $this->beforeFilter('csrf', array('on'=>'post'));
-	    $this->beforeFilter('auth', array('only'=>array('getDashboard')));
+	    //$this->beforeFilter('auth', array('only'=>array('getDashboard')));
+
 	}
 
 	public function getRegister() {
+        if (Auth::check())
+        {
+            //跳转的路径
+            return Redirect::to('home/index');
+        }
 	    $this->layout->content = View::make('users.register');
 	}
 
@@ -32,6 +40,11 @@ class UsersController extends BaseController {
 	}
 
 	public function getLogin() {
+        if (Auth::check())
+        {
+            //跳转的路径
+            return Redirect::to('home/index');
+        }
 	    $this->layout->content = View::make('users.login');
 	}
 
@@ -39,7 +52,7 @@ class UsersController extends BaseController {
 
 		if (Auth::attempt(array('email'=>Input::get('email'), 'password'=>Input::get('password')))) {
 
-		    return Redirect::to('users/dashboard')->with('message', '欢迎登录');
+		    return Redirect::to('home/index')->with('message', '欢迎登录');
 
 		} else {
 
@@ -49,9 +62,9 @@ class UsersController extends BaseController {
 	             
 	}
 
-	public function getDashboard() {
-	    $this->layout->content = View::make('users.dashboard');
-	}
+	/*public function getDashboard() {
+	    $this->layindex->content = View::make('users.dashboard');
+	}*/
 
 	public function getLogout() {
 		

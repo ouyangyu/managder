@@ -15,9 +15,18 @@ class HomeController extends BaseController {
 	|
 	*/
 
-	public function showWelcome()
+    protected $layout = "layouts.index";
+
+    public function __construct() {
+        $this->beforeFilter('csrf', array('on'=>'post'));
+        //$this->beforeFilter('auth', array('only'=>array('getIndex')));
+        $this->beforeFilter('auth', array('except' => ''));
+    }
+
+	public function getIndex()
 	{
-		return View::make('hello');
+        $this->layout->content = View::make('home.index');
+        //return View::make('hello');
 	}
 
 }

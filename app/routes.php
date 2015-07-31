@@ -11,8 +11,12 @@
 |
 */
 
-/*Route::get('/', function()
+Route::get('/', function()
 {
 	return View::make('hello');
-});*/
+});
 Route::controller('users', 'UsersController');
+Route::controller('home', 'HomeController');
+Route::controller('admin', 'AdminController');
+
+

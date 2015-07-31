@@ -1,11 +1,26 @@
+
 body {
-    padding-top: 60px;
+    padding-top: 50px;
+    padding-bottom: 40px;
+    color: #ffffff;
+    background-image: url(../images/body.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
- 
-.form-signup, .form-signin {
-   
-    margin: 0 auto;
+/* 简介 */
+
+.summary {
+    padding-right: 15px;
+    padding-left: 15px;
 }
+.summary .col-md-4 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+.form-group{
+    padding-top: 20px;
+}
+
 .alert{
 	color:red;
 }
